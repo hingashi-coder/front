@@ -1,22 +1,25 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-
+import login from '@/components/login/login.vue'
+import top from '@/components/top/top.vue'
+import firebase from '@/firebase.js'
+import signup from '@/components/signup/signup.vue'
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    component: top,
+    meta: { requiresAuth: true }
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/login',
+    component: login
+  },
+  {
+    path: '/signup',
+    component: signup,
+    name: 'signup'
   }
 ]
 
@@ -25,5 +28,13 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
-
+router.beforeEach(async (to, from, next) => {
+  const requiresAuth = to.matched.some(recode => recode.meta.requiresAuth)
+  console.log(requiresAuth)
+  if (requiresAuth && !(await firebase.getCurrentUser())) {
+    next({ path: '/login' })
+  } else {
+    next()
+  }
+})
 export default router
