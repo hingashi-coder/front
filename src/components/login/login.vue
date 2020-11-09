@@ -35,6 +35,7 @@
       style="margin: 6px 0"
       @click="$router.push({name: 'signup'})"
     >サインアップ</v-ons-button>
+    <v-ons-button @click="$router.push({name: 'authorization'})"></v-ons-button>
   </v-ons-page>
 </template>
 

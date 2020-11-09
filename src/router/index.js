@@ -4,6 +4,7 @@ import login from '@/components/login/login.vue'
 import top from '@/components/top/top.vue'
 import firebase from '@/firebase.js'
 import signup from '@/components/signup/signup.vue'
+import authorization from '@/components/authorization/authorization.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -20,6 +21,11 @@ const routes = [
     path: '/signup',
     component: signup,
     name: 'signup'
+  },
+  {
+    path: '/authorization',
+    component: authorization,
+    name: 'authorization'
   }
 ]
 
