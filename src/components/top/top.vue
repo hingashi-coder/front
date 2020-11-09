@@ -4,6 +4,8 @@
       <div class="center">スマートポスト</div>
     </v-ons-toolbar>
     <v-ons-button @click="logout">ログアウト</v-ons-button>
+    <router-link to="/authorization">Line認証</router-link>
+    <router-link to="/deviceRegister">デバイス連携</router-link>
   </v-ons-page>
 </template>
 

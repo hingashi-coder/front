@@ -5,6 +5,7 @@ import top from '@/components/top/top.vue'
 import firebase from '@/firebase.js'
 import signup from '@/components/signup/signup.vue'
 import authorization from '@/components/authorization/authorization.vue'
+import deviceRegister from '@/components/deviceRegister/deviceRegister.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -26,6 +27,12 @@ const routes = [
     path: '/authorization',
     component: authorization,
     name: 'authorization',
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/deviceRegister',
+    component: deviceRegister,
+    name: 'deviceRegister',
     meta: { requiresAuth: true }
   }
 ]
