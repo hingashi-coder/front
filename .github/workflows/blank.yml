@@ -27,6 +27,7 @@ jobs:
         env:
           VUE_APP_SERVER: ${{ secrets.VUE_APP_SERVER }} 
         run: |
+          cd src
           npm install
           npm run build
       - name: deploy to Firebase
