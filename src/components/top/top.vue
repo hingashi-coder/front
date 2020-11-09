@@ -9,7 +9,7 @@
 
 <script>
 import firebase from '@/firebase.js'
-// import axios from 'axios'
+import axios from 'axios'
 export default {
   methods: {
     logout () {
@@ -20,8 +20,11 @@ export default {
   },
   mounted () {
     firebase.getToken().then(token => {
-      // axios.post('http://localhost:3000')
-      console.log(process.env.VUE_APP_SERVER)
+      axios.post(process.env.VUE_APP_SERVER, {
+        token: token
+      }).then(e => {
+        console.log(e)
+      })
     })
   }
 }
