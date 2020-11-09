@@ -25,7 +25,8 @@ const routes = [
   {
     path: '/authorization',
     component: authorization,
-    name: 'authorization'
+    name: 'authorization',
+    meta: { requiresAuth: true }
   }
 ]
 
