@@ -10,6 +10,11 @@ Vue.use(VueRouter)
 
 const routes = [
   {
+    path: '/index.html',
+    component: top,
+    alias: '/'
+  },
+  {
     path: '/',
     component: top,
     meta: { requiresAuth: true }
