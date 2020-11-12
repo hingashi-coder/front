@@ -5,7 +5,7 @@ import store from './store'
 import 'onsenui/css/onsenui.css'
 import 'onsenui/css/onsen-css-components.css'
 import VueOnsen from 'vue-onsenui'
-import "./registerServiceWorker"
+import './registerServiceWorker'
 
 Vue.config.productionTip = false
 Vue.use(VueOnsen)
