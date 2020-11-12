@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <transition appear>
+    <transition>
       <router-view/>
     </transition>
   </div>
@@ -8,10 +8,11 @@
 
 <style>
 .v-enter-active, .v-leave-active {
-  transition: opacity .5s
+  transform: translate(0px, 0px);
+  transition: transform 500ms cubic-bezier(0, 0, 0.2, 1) 0ms;
 }
 
-.v-enter, .v-leave-to {
-  opacity: 0
+.v-enter{
+  transform: translateX(100vh);
 }
 </style>
