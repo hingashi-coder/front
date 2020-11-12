@@ -3,21 +3,37 @@
     <v-ons-toolbar>
       <div class="center">スマートポスト</div>
     </v-ons-toolbar>
-    <v-ons-button @click="logout">ログアウト</v-ons-button>
-    <router-link to="/authorization">Line認証</router-link>
-    <router-link to="/deviceRegister">デバイス連携</router-link>
+    <v-ons-tabbar
+      swipeable
+      position="auto"
+      :tabs="tabs"
+      :visible="true"
+      :index.sync="$store.state.homeMenuIndex"
+      >
+    </v-ons-tabbar>
   </v-ons-page>
 </template>
 
 <script>
 import firebase from '@/firebase.js'
 import axios from 'axios'
+import home from './home/home'
+import setting from './setting/setting'
 export default {
-  methods: {
-    logout () {
-      firebase.logout().then(() => {
-        this.$router.replace('/login')
-      })
+  data () {
+    return {
+      tabs: [
+        {
+          icon: 'fa-home',
+          label: 'Home',
+          page: home
+        },
+        {
+          icon: 'fa-cog',
+          label: 'Setting',
+          page: setting
+        }
+      ]
     }
   },
   mounted () {

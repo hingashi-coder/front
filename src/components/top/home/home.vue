@@ -1,5 +1,7 @@
 <template>
-  <v-ons-page></v-ons-page>
+  <v-ons-page>
+    <p>うんこ</p>
+  </v-ons-page>
 </template>
 
 <script>
