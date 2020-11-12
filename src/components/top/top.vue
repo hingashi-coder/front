@@ -8,7 +8,7 @@
       position="auto"
       :tabs="tabs"
       :visible="true"
-      :index.sync="activeIndex"
+      :index.sync="$store.state.homeMenuIndex"
       >
     </v-ons-tabbar>
   </v-ons-page>
@@ -22,7 +22,6 @@ import setting from './setting/setting'
 export default {
   data () {
     return {
-      activeIndex: 0,
       tabs: [
         {
           icon: 'fa-home',

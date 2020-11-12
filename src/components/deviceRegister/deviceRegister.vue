@@ -1,10 +1,9 @@
 <template>
   <v-ons-page>
-    <v-ons-toolbar>
-      <div class="center">
-        ポスト登録
-      </div>
-    </v-ons-toolbar>
+    <goBackBar
+      title="ポスト登録"
+      back
+    />
     <v-ons-list>
       <v-ons-listitem>
         <div class="left">デバイスID</div>
@@ -16,7 +15,7 @@
         <div class="left">ポストの名前</div>
       </v-ons-listitem>
       <v-ons-listitem>
-       <v-ons-input v-model="postCustomName"></v-ons-input>
+        <v-ons-input v-model="postCustomName"></v-ons-input>
       </v-ons-listitem>
     </v-ons-list>
     <v-ons-button @click="register">登録</v-ons-button>
@@ -24,9 +23,13 @@
 </template>
 
 <script>
+import goBackBar from '@/components/goBackBar/goBackBar'
 import firebase from '@/firebase.js'
 import axios from 'axios'
 export default {
+  components: {
+    goBackBar
+  },
   methods: {
     register () {
       firebase.getToken().then(token => {

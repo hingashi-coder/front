@@ -1,8 +1,9 @@
 <template>
   <v-ons-page>
-    <v-ons-toolbar>
-      <div class="center">認証画面</div>
-    </v-ons-toolbar>
+    <goBackBar
+      title="認証画面"
+      back
+    />
     <div class="center">
       <v-ons-input v-model="checkCode"></v-ons-input>
     </div>
@@ -15,7 +16,11 @@
 <script>
 import firebase from '@/firebase.js'
 import axios from 'axios'
+import goBackBar from '@/components/goBackBar/goBackBar'
 export default {
+  components: {
+    goBackBar
+  },
   data () {
     return {
       checkCode: ''
