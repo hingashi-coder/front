@@ -34,7 +34,9 @@ export default {
           {
             title: '成功'
           }
-        )
+        ).then(() => {
+          this.$router.go(-1)
+        })
       }).catch(err => {
         console.log(err)
         this.$ons.notification.alert(
