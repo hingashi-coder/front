@@ -1,8 +1,9 @@
 <template>
   <v-ons-page>
-    <v-ons-toolbar>
-      <div class="center">新規登録</div>
-    </v-ons-toolbar>
+    <goBackBar
+      title="新規登録"
+      back
+    />
      <v-ons-list>
       <v-ons-list-item>
         <div class="center">
@@ -43,7 +44,11 @@
 
 <script>
 import firebase from '@/firebase.js'
+import goBackBar from '@/components/goBackBar/goBackBar'
 export default {
+  components: {
+    goBackBar
+  },
   methods: {
     registration () {
       if (this.email.length > 0 && this.email === this.emailConfirm) {
