@@ -7,4 +7,6 @@ services:
     tty: true
     volumes:
     - ./:/app
+    - ~/.composer-docker/cache:/root/.composer/cache:delegated
+    - ./:/usr/src/app:cached
       
