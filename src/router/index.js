@@ -12,7 +12,8 @@ const routes = [
   {
     path: '/index.html',
     component: top,
-    alias: '/'
+    alias: '/',
+    meta: { requiresAuth: true }
   },
   {
     path: '/',
