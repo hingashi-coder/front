@@ -6,6 +6,10 @@ import firebase from '@/firebase.js'
 import signup from '@/components/signup/signup.vue'
 import authorization from '@/components/authorization/authorization.vue'
 import deviceRegister from '@/components/deviceRegister/deviceRegister.vue'
+import accountSetting from '@/components/accountSetting/accountSetting.vue'
+import changePassword from '@/components/accountSetting/changePass/changePassword.vue'
+import changeAddress from '@/components/accountSetting/changeAddress/changeAddress.vue'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -39,6 +43,21 @@ const routes = [
     component: deviceRegister,
     name: 'deviceRegister',
     meta: { requiresAuth: true }
+  },
+  {
+    path: '/accountSetting',
+    component: accountSetting,
+    name: 'accountSetting'
+  },
+  {
+    path: '/changePassword',
+    component: changePassword,
+    name: 'changePassword'
+  },
+  {
+    path: '/changeAddress',
+    component: changeAddress,
+    name: 'changeAddress'
   }
 ]
 
