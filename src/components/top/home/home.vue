@@ -1,7 +1,6 @@
 <template>
   <v-ons-page>
-    <p>うんこ</p>
-    <v-ons-button @click="latest">ボタン</v-ons-button>
+    <p>{{timestamp}}</p>
   </v-ons-page>
 </template>
 
@@ -9,6 +8,11 @@
 import firebase from '@/firebase.js'
 import axios from 'axios'
 export default {
+  data () {
+    return {
+      timestamp: ''
+    }
+  },
   methods: {
     latest () {
       return new Promise((resolve, reject) => {
@@ -16,11 +20,18 @@ export default {
           axios.post(process.env.VUE_APP_SERVER + '/latest', {
             token: token
           }).then(e => {
-            console.log(e.data)
+            resolve(e.data)
           })
         })
       })
     }
+  },
+  mounted () {
+    const data = this.latest()
+    data.then((e) => {
+      this.timestamp = e.time
+    })
+    this.timestamp = 'データ取得中'
   }
 }
 </script>
