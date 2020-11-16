@@ -45,6 +45,12 @@ export default {
           clickCallback () {
             self.$ons.notification.alert('test')
           }
+        },
+        {
+          title: 'アカウント設定',
+          clickCallback () {
+            self.$router.push('/accountSetting')
+          }
         }
       ],
       settings: [
