@@ -43,4 +43,22 @@ firebase.signup = (mail, password) => {
     })
   })
 }
+firebase.changePass = (newPassword) => {
+  return new Promise((resolve, reject) => {
+    firebase.auth().currentUser.updatePassword(newPassword).then(user => {
+      resolve()
+    }).catch(error => {
+      reject(error.message)
+    })
+  })
+}
+firebase.changeAddress = (newAddress) => {
+  return new Promise((resolve, reject) => {
+    firebase.auth().currentUser.updateEmail(newAddress).then(user => {
+      resolve()
+    }).catch(error => {
+      reject(error.message)
+    })
+  })
+}
 export default firebase

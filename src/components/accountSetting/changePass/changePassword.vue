@@ -6,13 +6,10 @@
     />
     <v-ons-list>
       <v-ons-list-item>
-        <v-ons-input placeholder='現在のパスワード' v-model="oldPass" type="password"/>
+        <v-ons-input placeholder='新しいパスワード' v-model="newPass" type="password"/>
       </v-ons-list-item>
       <v-ons-list-item>
-        <v-ons-input placeholder='新しいパスワード' v-model="newPass"/>
-      </v-ons-list-item>
-      <v-ons-list-item>
-        <v-ons-input placeholder='新しいパスワード' v-model="newPassCheck"/>
+        <v-ons-input placeholder='確認' v-model="newPassCheck" type="password"/>
       </v-ons-list-item>
     </v-ons-list>
     <v-ons-button
@@ -25,6 +22,7 @@
 
 <script>
 import goBackBar from '@/components/goBackBar/goBackBar'
+import firebase from '@/firebase.js'
 export default {
   components: {
     goBackBar
@@ -38,10 +36,14 @@ export default {
   },
   methods: {
     changePassword () {
-      if (this.oldPass === this.newPass) {
-        this.$ons.notification.alert('パスワードが同じです')
-      } else if (this.newPass === this.newPassCheck) {
-        this.$ons.notification.alert('OK')
+      if (this.newPass === this.newPassCheck) {
+        firebase.changePass(this.newPass).then(() => {
+          this.$ons.notification.alert('変更完了').then(() => {
+            this.$router.go(-1)
+          })
+        }).catch(msg => {
+          this.$ons.notification.alert(msg)
+        })
       } else {
         this.$ons.notification.alert('パスワードが違います')
       }
