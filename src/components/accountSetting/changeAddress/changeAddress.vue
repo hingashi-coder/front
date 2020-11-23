@@ -6,10 +6,10 @@
     />
       <v-ons-list>
         <v-ons-list-item>
-          <v-ons-input placeholder='今のメールアドレス' v-model="oldAddress"/>
+          <v-ons-input placeholder='新しいメールアドレス' v-model="oldAddress"/>
         </v-ons-list-item>
         <v-ons-list-item>
-          <v-ons-input placeholder='新しいメールアドレス' v-model="newAddress"/>
+          <v-ons-input placeholder='確認' v-model="newAddress"/>
         </v-ons-list-item>
     </v-ons-list>
     <v-ons-button
@@ -22,6 +22,7 @@
 
 <script>
 import goBackBar from '@/components/goBackBar/goBackBar'
+import firebase from '@/firebase.js'
 export default {
   data () {
     return {
@@ -35,9 +36,17 @@ export default {
   methods: {
     checkAddress () {
       if (this.oldAddress === this.newAddress) {
-        this.$ons.notification.alert('OK')
+        firebase.changeAddress(this.newAddress).then(() => {
+          this.$ons.notification.alert('OK').then(() => {
+            this.$router.go(-1)
+          })
+        }).catch(msg => {
+          console.log('tesss')
+          console.log(msg)
+          this.$ons.notification.alert(msg)
+        })
       } else {
-        this.$ons.notification.alert('違います')
+        this.$ons.notification.alert('入力したアドレスが違います。')
       }
     }
   }
