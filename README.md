@@ -2,6 +2,9 @@
 # こんにちは〜〜
 中野です。
 
+- マイク
+- スピーカー
+
 ## Project setup
 ```
 npm install
