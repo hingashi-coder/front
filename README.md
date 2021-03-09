@@ -1,4 +1,6 @@
 # front
+こんにちは〜〜
+中野です。
 
 ## Project setup
 ```
