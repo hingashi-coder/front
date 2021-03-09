@@ -1,5 +1,5 @@
 # front
-こんにちは〜〜
+# こんにちは〜〜
 中野です。
 
 ## Project setup
